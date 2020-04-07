@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Prompt:wght@100&display=swap');
 .App {
   text-align: center;
-  background-image: linear-gradient(-150deg, #92e7d0,#fcf696);
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-size: cover;
-  height: 100vh;
+  
 }
 
 .App-logo {
@@ -42,6 +39,6 @@
   }
 }
 
-.backgroundlogin{
-  
+body{
+ font-family: 'Fredoka One', cursive;
 }

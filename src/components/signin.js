@@ -13,12 +13,15 @@ const Signin = () => {
     const [isSignedIn, setIsSignedIn] = useState('');
     useEffect(() => {
         firebase.auth().onAuthStateChanged(
-            (user) => setIsSignedIn(!!user)
+            (user) => {
+                setIsSignedIn(!!user)
+                console.log(user)
+            }
         );
     })
     if (!isSignedIn) {
         return (
-            <div >
+            <div className="container" >
                 <h1>Activity in PSU Phuket campus</h1>
                 <img className="headlogo" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/01/DSC_8815-squoosh.jpg" />
                 <p>Please sign-in:</p>
@@ -29,10 +32,14 @@ const Signin = () => {
     }
     else {
         return (
-            <div className="App">
+            <div className="containerlogin">
                 <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-                <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
-                <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+                <div>
+                    <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
+                </div>
+                <div>
+                    <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+                </div>
             </div>
         );
     }
