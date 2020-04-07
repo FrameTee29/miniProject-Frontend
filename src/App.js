@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { render } from '@testing-library/react';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBAd8DV8Ubhk_1It-N8U4pZVPUlnzeEXxk",
@@ -33,14 +34,33 @@ const uiConfig = {
   }
 };
 
+
 const App = () => {
-  
+
+  const [isSignedIn, setIsSignedIn] = useState('');
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(
+      (user) => setIsSignedIn(!!user)
+    );
+  })
+  if (!isSignedIn) {
+    return (
+      <div>
+        <h1>FirebaseUI-React</h1>
+        <h1> with Firebase Authentication</h1>
+        <p>Please sign-in:</p>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      </div>
+    )
+  }
+
+
   return (
     <div className="App">
-      <h1>FirebaseUI-React</h1>
-      <h1> with Firebase Authentication</h1>
-      <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+      <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
+      <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
     </div>
   );
 }
