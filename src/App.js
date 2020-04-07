@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -19,15 +18,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-uiConfig = {
+const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
   // We will display Google , Facebook , Etc as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
   callbacks: {
@@ -37,12 +34,13 @@ uiConfig = {
 };
 
 const App = () => {
+  
   return (
     <div className="App">
       <h1>FirebaseUI-React</h1>
       <h1> with Firebase Authentication</h1>
       <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );
 }
