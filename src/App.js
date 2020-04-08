@@ -6,6 +6,9 @@ import uiConfig from './lib/uiConfig';
 import firebaseConfig from './lib/config';
 import Topbar from './components/topbar';
 import './signin.css';
+import Home from './Home';
+import About from './About';
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -56,8 +59,14 @@ const App = () => {
   }
 
   return (
-    <div className="containerlogin">
-      <Topbar />
+    <div>
+      <Router>
+        <Topbar/>
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </Router>
     </div>
   );
 

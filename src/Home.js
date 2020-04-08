@@ -3,14 +3,14 @@ import './App.css';
 import firebase from 'firebase';
 import Topbar from './components/topbar';
 
-const Activity = () => {
+const Home = () => {
 
-    return (
-        <div>
-            Activity
-        </div>
-    );
+  return (
+    <div>
+      Home
+    </div>
+  );
 
 }
 
-export default Activity;
+export default Home;
