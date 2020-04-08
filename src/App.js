@@ -6,9 +6,11 @@ import uiConfig from './lib/uiConfig';
 import firebaseConfig from './lib/config';
 import Topbar from './components/topbar';
 import './signin.css';
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Home from './Home';
 import About from './About';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import Activity from './Activity';
+import History from './History'
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -65,6 +67,8 @@ const App = () => {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/activity" component={Activity} />
+          <Route path="/History" component={History} />
         </Switch>
       </Router>
     </div>
