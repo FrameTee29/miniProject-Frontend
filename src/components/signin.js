@@ -20,7 +20,6 @@ const Signin = () => {
         firebase.auth().onAuthStateChanged(
             (user) => {
                 setIsSignedIn(!!user)
-                console.log(user)
             }
         );
     })
@@ -34,7 +33,7 @@ const Signin = () => {
                     </div>
                     <div className="boxsignin2">
                         <p className="pleasesignin">Please sign-in</p>
-                        <form className="formPSUpassport">
+                        {/* <form className="formPSUpassport">
                             <div>PSU Passport</div>
                             <div>username :</div>
                             <div className="wrap-input">
@@ -46,7 +45,7 @@ const Signin = () => {
                             </div>
                             <button className="buttonSigin" type="submit" >Sign in</button>
                         </form>
-                        <div className="Or">Or</div>
+                        <div className="Or">Or</div> */}
                         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                     </div>
                 </div>
