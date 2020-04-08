@@ -5,6 +5,7 @@ import uiConfig from '../lib/uiConfig';
 import firebaseConfig from '../lib/config';
 import './signin.css';
 import axios from 'axios';
+import Topbar from './topbar';
 
 
 firebase.initializeApp(firebaseConfig);
@@ -15,7 +16,7 @@ const Signin = () => {
     const [password, setPassword] = useState('');
     const [isSignedIn, setIsSignedIn] = useState('');
 
-   
+
     useEffect(() => {
         firebase.auth().onAuthStateChanged(
             (user) => {
@@ -55,13 +56,10 @@ const Signin = () => {
     else {
         return (
             <div className="containerlogin">
-                <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-                <div>
-                    <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
-                </div>
-                <div>
-                    <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
-                </div>
+                <Topbar />
+                <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
+                <p>{firebase.auth().currentUser.displayName}</p>
+                <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
             </div>
         );
     }
