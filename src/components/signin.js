@@ -9,7 +9,8 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 const Signin = () => {
-
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [isSignedIn, setIsSignedIn] = useState('');
     useEffect(() => {
         firebase.auth().onAuthStateChanged(
@@ -33,11 +34,11 @@ const Signin = () => {
                             <div>PSU Passport</div>
                             <div>username :</div>
                             <div className="wrap-input">
-                                <input className="inputlogin" type="text" />
+                                <input className="inputlogin" placeholder="Username..." type="text" onChange={e=>setUsername(e.target.value)} />
                             </div>
                             <div>password :</div>
                             <div className="wrap-input">
-                                <input className="inputlogin" type="password" />
+                                <input className="inputlogin" placeholder="Password..." type="password" onChange={e=>setPassword(e.target.value)}/>
                             </div>
                             <button className="buttonSigin" type="submit">Sign in</button>
                         </form>
