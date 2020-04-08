@@ -22,11 +22,16 @@ const Signin = () => {
     if (!isSignedIn) {
         return (
             <div className="container" >
-                <h1>Activity in PSU Phuket campus</h1>
-                <img className="headlogo" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/01/DSC_8815-squoosh.jpg" />
-                <p>Please sign-in:</p>
-
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+                <div className="boxsignin">
+                    <div>
+                        <h1>Activity in PSU Phuket campus</h1>
+                        <img className="headlogo" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/01/DSC_8815-squoosh.jpg" />
+                    </div>
+                    <div>
+                        <p>Please sign-in:</p>
+                        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+                    </div>
+                </div>
             </div>
         )
     }
