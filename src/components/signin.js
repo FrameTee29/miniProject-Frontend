@@ -3,7 +3,9 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import uiConfig from '../lib/uiConfig';
 import firebaseConfig from '../lib/config';
-import './signin.css'
+import './signin.css';
+import axios from 'axios';
+
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -12,6 +14,8 @@ const Signin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isSignedIn, setIsSignedIn] = useState('');
+
+   
     useEffect(() => {
         firebase.auth().onAuthStateChanged(
             (user) => {
@@ -40,7 +44,7 @@ const Signin = () => {
                             <div className="wrap-input">
                                 <input className="inputlogin" placeholder="Password..." type="password" onChange={e=>setPassword(e.target.value)}/>
                             </div>
-                            <button className="buttonSigin" type="submit">Sign in</button>
+                            <button className="buttonSigin" type="submit" >Sign in</button>
                         </form>
                         <div className="Or">Or</div>
                         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
