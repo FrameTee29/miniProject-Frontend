@@ -27,8 +27,17 @@ const Signin = () => {
                         <h1>Activity in PSU Phuket campus</h1>
                         <img className="headlogo" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/01/DSC_8815-squoosh.jpg" />
                     </div>
-                    <div>
+                    <div className="boxsignin2">
                         <p>Please sign-in:</p>
+                        <form className="formPSUpassport">
+                            <div>PSU Passport</div>
+                            <div>username</div>
+                            <input className="inputlogin" type="text" />
+                            <div>password</div>
+                            <input className="inputlogin" type="password" />
+                            <button className="buttonSigin" type="submit">Sign in</button>
+                        </form>
+                        <div>Or</div>
                         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                     </div>
                 </div>
