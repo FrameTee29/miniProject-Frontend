@@ -5,13 +5,24 @@ import uiConfig from '../lib/uiConfig';
 import firebaseConfig from '../lib/config';
 import './topbar.css';
 const Topbar = () => {
+
     return (
         <header>
-            <nav>
-                <div></div>
-                <div><a href="/">THE LOGO</a></div>
-                <div></div>
-            </nav>
+            <div className="boxtopbar">
+                <div className="barmenu">
+                    <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
+                    <div>Home</div>
+                    <div>About</div>
+                    <div>Activity</div>
+                    <div>History</div>
+                </div>
+                <div className="barname">
+                    <img className="PhotoURL" id="photo" src={firebase.auth().currentUser.photoURL} />
+                    <div className="displayName">{firebase.auth().currentUser.displayName}</div>
+                    <button className="btn-signout" onClick={() => firebase.auth().signOut()}>Sign-out</button>
+                </div>
+
+            </div>
         </header>
     );
 }

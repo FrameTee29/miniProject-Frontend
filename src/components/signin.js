@@ -57,9 +57,6 @@ const Signin = () => {
         return (
             <div className="containerlogin">
                 <Topbar />
-                <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL} />
-                <p>{firebase.auth().currentUser.displayName}</p>
-                <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
             </div>
         );
     }
