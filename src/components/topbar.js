@@ -4,10 +4,18 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import uiConfig from '../lib/uiConfig';
 import firebaseConfig from '../lib/config';
 import './topbar.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch
+  } from "react-router-dom";
+
 const Topbar = () => {
 
     return (
-        <header>
+        <div>
             <div className="boxtopbar">
                 <div className="barmenu">
                     <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
@@ -21,9 +29,8 @@ const Topbar = () => {
                     <div className="displayName">{firebase.auth().currentUser.displayName}</div>
                     <button className="btn-signout" onClick={() => firebase.auth().signOut()}>Sign-out</button>
                 </div>
-
             </div>
-        </header>
+        </div>
     );
 }
 
