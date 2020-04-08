@@ -24,11 +24,11 @@ const Signin = () => {
             <div className="container" >
                 <div className="boxsignin">
                     <div>
-                        <h1>Activity in PSU Phuket campus</h1>
+                        <div className="fontActivity">Activity in PSU Phuket campus</div>
                         <img className="headlogo" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/01/DSC_8815-squoosh.jpg" />
                     </div>
                     <div className="boxsignin2">
-                        <p>Please sign-in:</p>
+                        <p className="pleasesignin">Please sign-in</p>
                         <form className="formPSUpassport">
                             <div>PSU Passport</div>
                             <div>username :</div>
@@ -41,7 +41,7 @@ const Signin = () => {
                             </div>
                             <button className="buttonSigin" type="submit">Sign in</button>
                         </form>
-                        <div>Or</div>
+                        <div className="Or">Or</div>
                         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                     </div>
                 </div>

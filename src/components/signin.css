@@ -110,3 +110,14 @@ p{
     width: 100%;
     border-bottom: 2px solid rgba(0,0,150,0.8); 
  }
+ .fontActivity{
+font-size: 30px;
+color: #679bc9;
+ }
+
+ .pleasesignin{
+    color: #4c7396;
+ }
+ .Or{
+     margin-top: 10px;
+ }
