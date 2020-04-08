@@ -31,10 +31,14 @@ const Signin = () => {
                         <p>Please sign-in:</p>
                         <form className="formPSUpassport">
                             <div>PSU Passport</div>
-                            <div>username</div>
-                            <input className="inputlogin" type="text" />
-                            <div>password</div>
-                            <input className="inputlogin" type="password" />
+                            <div>username :</div>
+                            <div className="wrap-input">
+                                <input className="inputlogin" type="text" />
+                            </div>
+                            <div>password :</div>
+                            <div className="wrap-input">
+                                <input className="inputlogin" type="password" />
+                            </div>
                             <button className="buttonSigin" type="submit">Sign in</button>
                         </form>
                         <div>Or</div>
