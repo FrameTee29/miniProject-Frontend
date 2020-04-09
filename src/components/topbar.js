@@ -25,6 +25,10 @@ const Topbar = () => {
                     <Link to="/history">
                         <div> History</div>
                     </Link>
+                    {
+                        
+                    }
+
                 </div>
                 <div className="barname">
                     <img className="PhotoURL" id="photo" src={firebase.auth().currentUser.photoURL} />

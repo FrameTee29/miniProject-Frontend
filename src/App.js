@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Home from './Home';
 import Activity from './Activity';
 import History from './History'
+import Admin from './Admin';
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/home" component={Home} />
           <Route path="/activity" component={Activity} />
           <Route path="/History" component={History} />
+          <Route path="/History" component={Admin} />
         </Switch>
       </Router>
     </div>
