@@ -12,12 +12,12 @@ const Topbar = () => {
         <div>
             <div className="boxtopbar">
                 <div className="barmenu">
+                    
+                    <Link to="/home">
                     <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
+                    </Link>
                     <Link to="/home">
                         <div>Home</div>
-                    </Link>
-                    <Link to="/about">
-                        <div>About</div>
                     </Link>
                     <Link to="/activity">
                         <div>Activity</div>
