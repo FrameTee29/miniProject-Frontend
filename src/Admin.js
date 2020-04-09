@@ -5,11 +5,34 @@ import Topbar from './components/topbar';
 
 const Admin = () => {
 
-    return (
-        <div>
-            Admin
-        </div>
-    );
+    const [admin, setAdmin] = useState("False");
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(
+            (user) => {
+                if (user.email == "s6035512080@phuket.psu.ac.th") {
+                    setAdmin("True");
+                }
+            }
+        );
+    })
+    if (admin == "True") {
+        return (
+            <div>
+                Administrator
+            </div>
+        );
+    }
+    else{
+        return (
+            <div>
+               You not Administrator
+            </div>
+        );
+
+    }
+
+
 
 }
 

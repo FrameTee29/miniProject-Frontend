@@ -8,13 +8,27 @@ import { Link, } from "react-router-dom";
 
 const Topbar = () => {
 
+    const checkEmail = () => {
+
+        if(firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th"){
+            return (
+                <Link to="/admin">
+                    <div>Administrator</div>
+                </Link>
+            )
+        }
+        else{
+            return null;
+        }
+    }
+
     return (
         <div>
             <div className="boxtopbar">
                 <div className="barmenu">
-                    
+
                     <Link to="/home">
-                    <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
+                        <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
                     </Link>
                     <Link to="/home">
                         <div>Home</div>
@@ -23,12 +37,10 @@ const Topbar = () => {
                         <div>Activity</div>
                     </Link>
                     <Link to="/history">
-                        <div> History</div>
+                        <div>History</div>
                     </Link>
-                    {
-                        
-                    }
-
+                    {checkEmail()}
+                    
                 </div>
                 <div className="barname">
                     <img className="PhotoURL" id="photo" src={firebase.auth().currentUser.photoURL} />

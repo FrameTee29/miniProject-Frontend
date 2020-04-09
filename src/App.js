@@ -68,7 +68,7 @@ const App = () => {
           <Route path="/home" component={Home} />
           <Route path="/activity" component={Activity} />
           <Route path="/History" component={History} />
-          <Route path="/History" component={Admin} />
+          <Route path="/admin" component={Admin} />
         </Switch>
       </Router>
     </div>
