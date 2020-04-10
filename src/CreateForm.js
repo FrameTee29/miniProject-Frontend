@@ -15,10 +15,10 @@ const CreateForm = () => {
                     <div className="Head">CreateForm</div>
                     <form className="boxform">
                         <div className="header">ชื่อกิจกรรม</div>
-                        <input type="text" placeholder="ชื่อกิจกรรม..." />
+                        <input  className="input1" type="text" placeholder="ชื่อกิจกรรม..." />
 
                         <div className="header">หน่วยงานที่จัดกิจกรรม</div>
-                        <input type="text" placeholder="หน่วยงาน..." />
+                        <input className="input1" type="text" placeholder="หน่วยงาน..." />
 
                         <div className="header">รายละเอียด</div>
                         <textarea className="textarea1" placeholder="Detail..." />
@@ -34,6 +34,7 @@ const CreateForm = () => {
                         {start}
                         <div className="header1_1">สิ้นสุดกิจกรรม</div>
                         <input type="time" />
+                        <div className="lastbutton"><button className="submit1" type="submit">Create</button></div>
                     </form>
                 </div>
 

@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 .FormActivity{
+    margin: 20px 0px 20px 0px;
     display: flex;
-    width: 500px;
-    height: 650px;
+    width: 650px;
+    height: 1100px;
     background-color: white;
     flex-direction: column;
     align-items: flex-start;
@@ -13,7 +14,7 @@
 
 .Head{
     display: flex;
-    width: 500px;
+    width: 650px;
     align-items: center;
     justify-content: center;
     font-size: 30px;
@@ -47,4 +48,37 @@
 .textarea1{
     width: 400px;
     height: 175px;
+}
+
+.input1{
+    width: 400px;
+    font-size: 15px;
+    font-family: 'Mali', cursive;
+    color: rgb(63, 63, 63);
+    font-weight: 500;
+}
+.submit1{
+    display: flex;
+    width: 131px;
+    height: 40px;
+    border-radius: 10px;
+    background-color:yellowgreen;
+    border-color: #33691e ;
+    font-family: 'Mali', cursive;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    transition: font-size 1s ;   
+}
+.submit1:hover{
+    font-size: 20px;
+    
+}
+
+.lastbutton{
+    display: flex;
+    width: 650px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
 }
