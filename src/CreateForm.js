@@ -3,9 +3,27 @@ import './CreateForm.css';
 import firebase from 'firebase';
 import Topbar from './components/topbar';
 import Topbaradmin from './components/Topbaradmin';
-import { Route, Router } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
 
 const CreateForm = () => {
+    const classes = useStyles();
     const [name, setName] = useState('')
     const [department, setdepartment] = useState('')
     const [detail, setdetail] = useState('')
@@ -13,15 +31,17 @@ const CreateForm = () => {
     const [date, setDate] = useState('')
     const [start, setStart] = useState('')
     const [end, setend] = useState('')
+    const [open, setOpen] = useState(false);
 
     const firestore = firebase.firestore();
 
     const addActivity = async () => {
         // await firestore.collection('Activity').doc(name).set({ name, department, detail, give, date, start, end })
-        // alert("Success");
-
-        Router.push('/activity')
+        setOpen(true);
     }
+    const handleClose = () => {
+        setOpen(false);
+      };
 
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
@@ -52,7 +72,28 @@ const CreateForm = () => {
 
                         <div className="header1_1">สิ้นสุดกิจกรรม</div>
                         <input type="time" onChange={e => setend(e.target.value)} />
-                        <div className="lastbutton"><button className="submit1" type="submit" onClick={addActivity}>Create</button></div>
+                        <div className="lastbutton">
+                            <button className="submit1" type="button" onClick={addActivity}>Create</button>
+                            <Modal
+                                aria-labelledby="transition-modal-title"
+                                aria-describedby="transition-modal-description"
+                                className={classes.modal}
+                                open={open}
+                                onClose={handleClose}
+                                closeAfterTransition
+                                BackdropComponent={Backdrop}
+                                BackdropProps={{
+                                    timeout: 500,
+                                }}
+                            >
+                                <Fade in={open}>
+                                    <div className={classes.paper}>
+                                        <h2 id="transition-modal-title">Transition modal</h2>
+                                        <p id="transition-modal-description">react-transition-group animates me.</p>
+                                    </div>
+                                </Fade>
+                            </Modal>
+                        </div>
                     </div>
                 </div>
 

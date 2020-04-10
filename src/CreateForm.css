@@ -10,6 +10,7 @@
     justify-content: center;
     font-family: 'Mali', cursive;
     box-shadow:0 0 6px 0 rgba(0,0,0,0.2);
+    border-radius: 20px;
 }
 
 .Head{
@@ -36,6 +37,7 @@
     width: 100%;
     height: 1050px;
     align-items: center;
+    background-color: #c5e8f2;
 }
 .boxform{
     margin-left: 50px;
