@@ -11,6 +11,8 @@ import Home from './Home';
 import Activity from './Activity';
 import History from './History'
 import Admin from './Admin';
+import CreateForm from './CreateForm';
+import EditActivity from './EditActivity';
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -69,6 +71,8 @@ const App = () => {
           <Route path="/activity" component={Activity} />
           <Route path="/History" component={History} />
           <Route path="/admin" component={Admin} />
+          <Route path="/createform" component={CreateForm} />
+          <Route path="/editactivity" component={EditActivity} />
         </Switch>
       </Router>
     </div>

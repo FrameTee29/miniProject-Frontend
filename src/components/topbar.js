@@ -13,7 +13,7 @@ const Topbar = () => {
         if(firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th"){
             return (
                 <Link to="/admin">
-                    <div>Administrator</div>
+                    <button className="btn-menu">Administrator</button>
                 </Link>
             )
         }
@@ -25,19 +25,20 @@ const Topbar = () => {
     return (
         <div>
             <div className="boxtopbar">
-                <div className="barmenu">
+                
 
                     <Link to="/home">
                         <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
                     </Link>
+                    <div className="barmenu">
                     <Link to="/home">
-                        <div>Home</div>
+                        <button className="btn-menu">Home</button>
                     </Link>
                     <Link to="/activity">
-                        <div>Activity</div>
+                        <button className="btn-menu">Activity</button>
                     </Link>
                     <Link to="/history">
-                        <div>History</div>
+                        <button className="btn-menu">History</button>
                     </Link>
                     {checkEmail()}
                     
