@@ -5,8 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Router, Route, Link } from 'react-router-dom'
 import firebaseConfig from './lib/config';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from 'firebase';
+import 'firebase/firebase-firestore';
 
 if(firebase.apps.length ===0){
   firebase.initializeApp(firebaseConfig)

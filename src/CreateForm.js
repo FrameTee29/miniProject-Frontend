@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CreateForm.css';
-import firebase from 'firebase';
+import firebase  from 'firebase';
 import Topbar from './components/topbar';
 import Topbaradmin from './components/Topbaradmin';
 
@@ -13,13 +13,19 @@ const CreateForm = () => {
     const [start, setStart] = useState('')
     const [end, setend] = useState('')
 
+    const firestore = firebase.firestore();
+
+    const addActivity=()=>{
+        firestore.collection('Activity').doc(name).set({name,department,detail,give,date,start,end})
+    }
+
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
             <div className="containerForm">
                 <Topbaradmin />
                 <div className="FormActivity">
                     <div className="Head">CreateForm</div>
-                    <form className="boxform">
+                    <div className="boxform">
                         <div className="header">ชื่อกิจกรรม</div>
                         <input  className="input1" type="text" placeholder="ชื่อกิจกรรม..." onChange={e => setName(e.target.value)}/>
 
@@ -42,8 +48,8 @@ const CreateForm = () => {
                     
                         <div className="header1_1">สิ้นสุดกิจกรรม</div>
                         <input type="time" onChange={e => setend(e.target.value)}/>
-                        <div className="lastbutton"><button className="submit1" type="submit">Create</button></div>
-                    </form>
+                        <div className="lastbutton"><button className="submit1" type="submit" onClick={addActivity}>Create</button></div>
+                    </div>
                 </div>
 
             </div>
