@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import firebase from 'firebase';
 import Topbar from './components/topbar';
+import Topbaradmin from './components/Topbaradmin';
 
 const Admin = () => {
 
@@ -19,7 +20,9 @@ const Admin = () => {
     if (admin == "True") {
         return (
             <div>
+                <Topbaradmin/>
                 Administrator
+                
             </div>
         );
     }
