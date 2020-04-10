@@ -12,11 +12,20 @@ const CreateForm = () => {
                 CreateForm
                 <form>
                     <div>ชื่อกิจกรรม</div>
+                    <input type="text" placeholder="ชื่อกิจกรรม..."/>
                     <div>หน่วยงานที่จัดกิจกรรม</div>
+                    <input type="text" placeholder="หน่วยงาน..."/>
                     <div>รายละเอียด</div>
+                    <textarea  placeholder="Detail..."/>
                     <div>สิ่งที่ได้รับจากกิจกรรม</div>
+                    <textarea  placeholder="Detail..."/>
                     <div>วันที่</div>
+                    <input type="date"  min="2020-01-01" max="2023-12-31"/>
                     <div>เวลาที่จัดกิจกรรม</div>
+                    <div>เริ่มกิจกรรม</div>
+                    <input type="time"/>
+                    <div>สิ้นสุดกิจกรรม</div>
+                    <input type="time"/>
                 </form>
             </div>
         );
