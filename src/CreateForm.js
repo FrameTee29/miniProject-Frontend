@@ -7,20 +7,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { Link, } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        border: '1px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
     },
-  }));
+}));
 
 const CreateForm = () => {
     const classes = useStyles();
@@ -41,7 +47,7 @@ const CreateForm = () => {
     }
     const handleClose = () => {
         setOpen(false);
-      };
+    };
 
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
@@ -88,8 +94,11 @@ const CreateForm = () => {
                             >
                                 <Fade in={open}>
                                     <div className={classes.paper}>
-                                        <h2 id="transition-modal-title">Transition modal</h2>
-                                        <p id="transition-modal-description">react-transition-group animates me.</p>
+                                        <div className="header">Status create activity</div>
+                                        <div>Succuess</div>
+                                        <Link to="/admin">
+                                            <Button variant="contained" color="primary" >OK</Button>
+                                        </Link>
                                     </div>
                                 </Fade>
                             </Modal>
