@@ -10,6 +10,14 @@ const CreateForm = () => {
             <div>
                 <Topbaradmin/>
                 CreateForm
+                <form>
+                    <div>ชื่อกิจกรรม</div>
+                    <div>หน่วยงานที่จัดกิจกรรม</div>
+                    <div>รายละเอียด</div>
+                    <div>สิ่งที่ได้รับจากกิจกรรม</div>
+                    <div>วันที่</div>
+                    <div>เวลาที่จัดกิจกรรม</div>
+                </form>
             </div>
         );
     }
