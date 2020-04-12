@@ -12,7 +12,7 @@ const Topbar = () => {
 
         if(firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th"){
             return (
-                <Link to="/admin">
+                <Link to="/editactivity">
                     <button className="btn-menu">Administrator</button>
                 </Link>
             )
