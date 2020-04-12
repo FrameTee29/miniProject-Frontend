@@ -96,7 +96,7 @@ const CreateForm = () => {
                                     <div className={classes.paper}>
                                         <div className="header">Status create activity</div>
                                         <div>Succuess</div>
-                                        <Link to="/admin">
+                                        <Link to="/editactivity">
                                             <Button variant="contained" color="primary" >OK</Button>
                                         </Link>
                                     </div>

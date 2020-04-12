@@ -10,7 +10,14 @@ const Listactivity =(props)=>{
     const { date, department, detail, end, give, name, start } = activity;
     return(
         <li>
-            {date} + {department} + {detail} + {end} + {give} + {name} + {start}
+             <div>ชื่อกิจกรรม :{name}</div>
+            <div>วันที่ : {date}</div>
+            <div>หน่วยงานที่จัดกิจกรรม : {department}</div>
+            <div>รายละเอียด : {detail}</div>
+            <div>สิ่งที่ได้รับจากกิจกรรม : {give}</div>
+            <div>เวลาเริ่มกิจกรรม : {end}</div>
+            <div>สิ้นสุดกิจกรรม : {start}</div>
+              
         </li>
     )
 }
