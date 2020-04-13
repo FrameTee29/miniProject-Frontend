@@ -55,7 +55,7 @@ const Listactivity = (props) => {
             {
                 name: newname,
                 department: newdepartment,
-                detail: newdepartment,
+                detail: newdetail,
                 give: newgive,
                 date: newdate,
                 start: newstart,
