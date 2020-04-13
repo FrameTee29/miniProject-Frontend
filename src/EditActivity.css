@@ -1,0 +1,17 @@
+.OuterEdit{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: royalblue;
+    align-items: center;
+    justify-content: center;
+}
+
+.ContainerEdit{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    background-color: #c5e8f2;
+    align-items: center;
+   
+}
