@@ -34,7 +34,7 @@ const Listactivity = (props) => {
     const firestore = firebase.firestore();
 
     const { activity, deleteActivity } = props;
-    const { date, department, detail, end, give, name, start } = activity;
+    const { id,date, department, detail, end, give, name, start } = activity;
 
     const classes = useStyles();
     const [newname, setName] = useState('')
@@ -81,7 +81,7 @@ const Listactivity = (props) => {
                     <div className="item2">{department}</div>
                 </div>
                 <div className="grid3">
-                    <button className="btn-delete" onClick={() => deleteActivity(name)}>Delete</button>
+                    <button className="btn-delete" onClick={() => deleteActivity(id)}>Delete</button>
                     <button className="btn-edit" onClick={handleOpen}>Edit</button>
                 </div>
             </div>

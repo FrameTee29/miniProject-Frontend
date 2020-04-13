@@ -12,16 +12,17 @@ const EditActivity = () => {
         await firestore.collection("Activity").onSnapshot((snapshot) => {
             let myactivity = snapshot.docs.map(d => {
                 const { date, department, detail, end, give, name, start } = d.data();
-                return { date, department, detail, end, give, name, start };
+                const id= d.id;
+                return { id, date, department, detail, end, give, name, start };
             });
-            // console.log(myactivity)
+            
             setActivitys(myactivity);
         });
 
     }
 
-    const deleteActivity = (name)=>{
-        firestore.collection("Activity").doc(name+'').delete();
+    const deleteActivity = (id)=>{
+        firestore.collection("Activity").doc(id+'').delete();
     }
 
     useEffect(() => {
