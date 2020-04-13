@@ -1,0 +1,26 @@
+.MenugridActivity{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    font-family: 'Mali', cursive;
+}
+
+.MenugridActivity > .grid--1,.grid--2 {
+    /* background-color: rgba(127, 14, 202, 0.8); */
+    
+    background-color: #ffaf01;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+
+  }
+
+  .grid--1{
+      width: 590px;
+  }
+  .grid--2{
+      width: 220px;
+  }

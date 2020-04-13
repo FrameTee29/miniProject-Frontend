@@ -1,0 +1,24 @@
+.Grid-containeruser{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    background-color: white;
+    padding: 10px;
+
+    font-family: 'Mali', cursive;
+}
+
+.Grid-containeruser > .grid_1,.grid_2 {
+    /* background-color: rgba(127, 14, 202, 0.8); */
+    box-shadow:0 0 6px 0 rgba(0,0,0,0.2);
+    padding: 10px 0;
+    font-size: 30px;
+  }
+
+  .grid_1{
+      width: 590px;
+  }
+
+  .grid_2{
+    width: 220px;
+}

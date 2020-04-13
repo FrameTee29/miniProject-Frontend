@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import firebase from 'firebase';
 import Listactivity from './components/listactivity';
+import Listactivityuser from './components/listactivityuser';
+import './Activity.css'
 
 
 const Activity = () => {
@@ -21,19 +23,34 @@ const Activity = () => {
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getAcitivity();
-    },[])
+    }, [])
 
     return (
         <div>
-            Activity
-            { activitys.map((activity,index)=>{
-                    return(
-                        <Listactivity key={index} activity={activity}/>
-                    )
-                })}
+            <div className="OuterEdit">
+                <div className="ContainerEdit">
+                    <div className="HeadEdit">Activity</div>
+                    <div className="MenugridActivity">
+                        <div className="grid--1">
+                            <div className="menuhead">ชื่อกิจกรรม</div>
+                        </div>
+
+                        <div className="grid--2">
+                            <div className="menuhead">หน่วยงานที่จัดกิจกรรม</div>
+                        </div>
+                    </div>
+                    {activitys.map((activity, index) => {
+                        return (
+                            <Listactivityuser key={index} activity={activity} />
+                        )
+                    })}
+                </div>
+            </div>
         </div>
+
+
     );
 
 }

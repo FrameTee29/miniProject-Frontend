@@ -10,6 +10,8 @@
     font-weight:bold;
     color: #2999ba;
     padding:5px;
+    border: rgb(131, 131, 130);
+    border-bottom: solid;
 }
 
 
