@@ -5,7 +5,7 @@
     grid-gap: 10px;
     background-color: white;
     padding: 10px;
-   
+    width: 920px;
     font-family: 'Mali', cursive;
 }
 
@@ -16,10 +16,19 @@
     font-size: 30px;
   }
 
-.grid1{
-    display: flex;
-}
+  .grid1{
+      width: 590px;
+  }
 
+  .grid2{
+    width: 220px;
+}
+.grid3{
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    justify-content: space-evenly;
+}
 .item1{
     display: flex;
     width: 550px;
@@ -56,12 +65,14 @@
     font-size: 15px;
     border-radius: 5px;
     cursor: pointer;
+    width: 80px;
 }
 
 .btn-edit{
     background-color: rgb(253, 243, 95);
     font-family: 'Mali', cursive;
     border: none;
+    width: 80px;
     font-size: 15px;
     border-radius: 5px;
     cursor: pointer;

@@ -21,6 +21,10 @@ const EditActivity = () => {
 
     }
 
+    const deleteActivity = (name)=>{
+        firestore.collection("Activity").doc(name+'').delete();
+    }
+
     useEffect(() => {
         getAcitivity();
     }, [])
@@ -32,13 +36,29 @@ const EditActivity = () => {
                 <div className="OuterEdit">
                     <div className="ContainerEdit">
                         <div className="HeadEdit">EditActivity</div>
-                           
-                            {activitys.map((activity, index) => {
-                        return (
-                            <Listactivity key={index} activity={activity} />
-                        )
-                    })}
-                    
+
+                        <div className="Menugrid">
+                            <div className="grid-1">
+                                <div className="menuhead">ชื่อกิจกรรม</div>
+                            </div>
+
+                            <div className="grid-2">
+                                <div className="menuhead">หน่วยงานที่จัดกิจกรรม</div>
+                            </div>
+
+                            <div className="grid-3">
+                                <div className="menuhead">ตัวเลือก</div>
+                            </div>
+                        </div>
+
+                        {activitys.map((activity, index) => {
+                            return (
+                                <Listactivity key={index} activity={activity} 
+                                    deleteActivity={deleteActivity}
+                                />
+                            )
+                        })}
+
                     </div>
                 </div>
             </div>

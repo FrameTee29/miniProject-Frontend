@@ -22,3 +22,42 @@
     font-weight: 500;
     font-size: 30px;
 }
+
+.Menugrid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 920px;
+    font-family: 'Mali', cursive;
+}
+
+.Menugrid > .grid-1,.grid-2,.grid-3 {
+    /* background-color: rgba(127, 14, 202, 0.8); */
+    
+    background-color: #ffaf01;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+
+  }
+
+  .grid-1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 590px;
+  }
+
+  .grid-2{
+    grid-column-start:2;
+    grid-column-end: 3;
+    width: 220px;
+  }
+
+  .grid-3{
+    grid-column-start:3;
+    grid-column-end: 3;
+    width: 80px;
+  }

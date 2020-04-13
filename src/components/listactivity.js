@@ -7,7 +7,7 @@ import { Link, } from "react-router-dom";
 import './listactivity.css';
 
 const Listactivity = (props) => {
-    const { activity } = props;
+    const { activity,deleteActivity } = props;
     const { date, department, detail, end, give, name, start } = activity;
     return (
         <div>
@@ -21,11 +21,10 @@ const Listactivity = (props) => {
                 <div className="grid2">
                     <div className="item2">{department}</div>
                 </div>
-                <div className="btn-edits">
-                    <button className="btn-delete">Delete</button>
+                <div className="grid3">
+                    <button className="btn-delete" onClick={()=>deleteActivity(name)}>Delete</button>
                     <button className="btn-edit">Edit</button>
                 </div>
-
             </div>
             {/* <div>ชื่อกิจกรรม :{name}</div>
             <div>วันที่ : {date}</div>
