@@ -32,11 +32,13 @@ const EditActivity = () => {
                 <div className="OuterEdit">
                     <div className="ContainerEdit">
                         <div className="HeadEdit">EditActivity</div>
+                           
                             {activitys.map((activity, index) => {
                         return (
                             <Listactivity key={index} activity={activity} />
                         )
                     })}
+                    
                     </div>
                 </div>
             </div>
