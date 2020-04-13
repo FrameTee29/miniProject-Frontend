@@ -49,7 +49,6 @@ const Listactivity = (props) => {
     const handleOpen = () => {
         setOpen(true);
     };
-
     const handleClose = async () => {
         await firestore.collection('Activity').doc(id).update(
             {
@@ -63,7 +62,6 @@ const Listactivity = (props) => {
             })
         setOpen(false);
     };
-
     const handleClose2 = async () => {
         setOpen(false);
     };
