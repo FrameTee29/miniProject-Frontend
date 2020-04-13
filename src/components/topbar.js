@@ -37,9 +37,9 @@ const Topbar = () => {
                     <Link to="/activity">
                         <button className="btn-menu">Activity</button>
                     </Link>
-                    <Link to="/history">
+                    {/* <Link to="/history">
                         <button className="btn-menu">History</button>
-                    </Link>
+                    </Link> */}
                     {checkEmail()}
                     
                 </div>
