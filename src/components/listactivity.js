@@ -30,18 +30,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Listactivity = (props) => {
+
+    const firestore = firebase.firestore();
+
+    const { activity, deleteActivity } = props;
+    const { date, department, detail, end, give, name, start } = activity;
+
     const classes = useStyles();
+    const [newname, setName] = useState('')
+    const [newdepartment, setdepartment] = useState('')
+    const [newdetail, setdetail] = useState('')
+    const [newgive, setGive] = useState('')
+    const [newdate, setDate] = useState('')
+    const [newstart, setStart] = useState('')
+    const [newend, setend] = useState('')
     const [open, setOpen] = useState(false);
+
     const handleOpen = () => {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = async () => {
+        await firestore.collection('Activity').doc(name).update(
+            {
+                name: newname,
+                department: newdepartment,
+                detail: newdepartment,
+                give: newgive,
+                date: newdate,
+                start: newdate,
+                end: newend
+            })
         setOpen(false);
     };
 
-    const { activity, deleteActivity } = props;
-    const { date, department, detail, end, give, name, start } = activity;
+    const handleClose2 = async () => {
+        setOpen(false);
+    };
+
     return (
         <div>
             <div className="Grid-container">
@@ -73,9 +99,34 @@ const Listactivity = (props) => {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <div className="header">Status create activity</div>
-                        <div>Succuess</div>
+                        {/* <div className="header">Status create activity</div>
+                        <div>Succuess</div> */}
+                        <div>
+                            <div className="header">ชื่อกิจกรรม</div>
+                            <input className="input1" type="text"  onChange={e => setName(e.target.value)} ></input>
+
+                            <div className="header">หน่วยงานที่จัดกิจกรรม</div>
+                            <input className="input1" type="text"  onChange={e => setdepartment(e.target.value)} />
+
+                            <div className="header">รายละเอียด</div>
+                            <textarea className="textarea1"  onChange={e => setdetail(e.target.value)} />
+
+                            <div className="header">สิ่งที่ได้รับจากกิจกรรม</div>
+                            <textarea className="textarea1"  onChange={e => setGive(e.target.value)} />
+
+                            <div className="header">วันที่</div>
+                            <input type="date"  min="2020-01-01" max="2023-12-31" onChange={e => setDate(e.target.value)} />
+
+                            <div className="header">เวลาที่จัดกิจกรรม</div>
+                            <div className="header1_1">เริ่มกิจกรรม</div>
+                            <input type="time" onChange={e => setStart(e.target.value)} />
+
+                            <div className="header1_1">สิ้นสุดกิจกรรม</div>
+                            <input type="time"  onChange={e => setend(e.target.value)} />
+                        </div>
+
                         <Button variant="contained" color="primary" onClick={handleClose} >Update</Button>
+                        <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
                     </div>
                 </Fade>
             </Modal>

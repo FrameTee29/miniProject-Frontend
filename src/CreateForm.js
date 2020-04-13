@@ -43,7 +43,7 @@ const CreateForm = () => {
     const firestore = firebase.firestore();
 
     const addActivity = async () => {
-         await firestore.collection('Activity').doc(name).set({ name, department, detail, give, date, start, end })
+        await firestore.collection('Activity').doc(name).set({ name, department, detail, give, date, start, end })
         setOpen(true);
     }
     const handleClose = () => {
