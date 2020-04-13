@@ -37,13 +37,13 @@ const Listactivity = (props) => {
     const { id,date, department, detail, end, give, name, start } = activity;
 
     const classes = useStyles();
-    const [newname, setName] = useState('')
-    const [newdepartment, setdepartment] = useState('')
-    const [newdetail, setdetail] = useState('')
-    const [newgive, setGive] = useState('')
-    const [newdate, setDate] = useState('')
-    const [newstart, setStart] = useState('')
-    const [newend, setend] = useState('')
+    const [newname, setName] = useState(name)
+    const [newdepartment, setdepartment] = useState(department)
+    const [newdetail, setdetail] = useState(detail)
+    const [newgive, setGive] = useState(give)
+    const [newdate, setDate] = useState(date)
+    const [newstart, setStart] = useState(start)
+    const [newend, setend] = useState(end)
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -51,7 +51,7 @@ const Listactivity = (props) => {
     };
 
     const handleClose = async () => {
-        await firestore.collection('Activity').doc(name).update(
+        await firestore.collection('Activity').doc(id).update(
             {
                 name: newname,
                 department: newdepartment,
@@ -104,26 +104,26 @@ const Listactivity = (props) => {
                         <form>
                             <div>
                                 <div className="header">ชื่อกิจกรรม</div>
-                                <input className="input1" type="text" value={name} onChange={e => setName(e.target.value)} ></input>
+                                <input className="input1" type="text" value={newname} onChange={e => setName(e.target.value)} />
 
                                 <div className="header">หน่วยงานที่จัดกิจกรรม</div>
-                                <input className="input1" type="text" onChange={e => setdepartment(e.target.value)} />
+                                <input className="input1" type="text" value={newdepartment} onChange={e => setdepartment(e.target.value)} />
 
                                 <div className="header">รายละเอียด</div>
-                                <textarea className="textarea1" onChange={e => setdetail(e.target.value)} />
+                                <textarea className="textarea1" value={newdetail} onChange={e => setdetail(e.target.value)} />
 
                                 <div className="header">สิ่งที่ได้รับจากกิจกรรม</div>
-                                <textarea className="textarea1" onChange={e => setGive(e.target.value)} />
+                                <textarea className="textarea1" value={newgive} onChange={e => setGive(e.target.value)} />
 
                                 <div className="header">วันที่</div>
-                                <input type="date" min="2020-01-01" max="2023-12-31" onChange={e => setDate(e.target.value)} />
+                                <input type="date" min="2020-01-01" max="2023-12-31" value={newdate} onChange={e => setDate(e.target.value)} />
 
                                 <div className="header">เวลาที่จัดกิจกรรม</div>
                                 <div className="header1_1">เริ่มกิจกรรม</div>
-                                <input type="time" onChange={e => setStart(e.target.value)} />
+                                <input type="time" value={newstart} onChange={e => setStart(e.target.value)} />
 
                                 <div className="header1_1">สิ้นสุดกิจกรรม</div>
-                                <input type="time" onChange={e => setend(e.target.value)} />
+                                <input type="time" value={newend} onChange={e => setend(e.target.value)} />
                             </div>
                         </form>
 
