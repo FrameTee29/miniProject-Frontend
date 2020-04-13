@@ -13,7 +13,6 @@ import History from './History'
 import Admin from './Admin';
 import CreateForm from './CreateForm';
 import EditActivity from './EditActivity';
-import UpdateForm from './UpdateForm';
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
@@ -74,7 +73,6 @@ const App = () => {
           <Route path="/admin" component={Admin} />
           <Route path="/createform" component={CreateForm} />
           <Route path="/editactivity" component={EditActivity} />
-          <Route path="/updateactivity" component={UpdateForm} />
         </Switch>
       </Router>
     </div>
