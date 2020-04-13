@@ -101,32 +101,39 @@ const Listactivity = (props) => {
                     <div className={classes.paper}>
                         {/* <div className="header">Status create activity</div>
                         <div>Succuess</div> */}
+                        <form>
+                            <div>
+                                <div className="header">ชื่อกิจกรรม</div>
+                                <input className="input1" type="text" value={name} onChange={e => setName(e.target.value)} ></input>
+
+                                <div className="header">หน่วยงานที่จัดกิจกรรม</div>
+                                <input className="input1" type="text" onChange={e => setdepartment(e.target.value)} />
+
+                                <div className="header">รายละเอียด</div>
+                                <textarea className="textarea1" onChange={e => setdetail(e.target.value)} />
+
+                                <div className="header">สิ่งที่ได้รับจากกิจกรรม</div>
+                                <textarea className="textarea1" onChange={e => setGive(e.target.value)} />
+
+                                <div className="header">วันที่</div>
+                                <input type="date" min="2020-01-01" max="2023-12-31" onChange={e => setDate(e.target.value)} />
+
+                                <div className="header">เวลาที่จัดกิจกรรม</div>
+                                <div className="header1_1">เริ่มกิจกรรม</div>
+                                <input type="time" onChange={e => setStart(e.target.value)} />
+
+                                <div className="header1_1">สิ้นสุดกิจกรรม</div>
+                                <input type="time" onChange={e => setend(e.target.value)} />
+                            </div>
+                        </form>
+
                         <div>
-                            <div className="header">ชื่อกิจกรรม</div>
-                            <input className="input1" type="text"  onChange={e => setName(e.target.value)} ></input>
+                            <Button variant="contained" color="primary" onClick={handleClose} >Update</Button>
+                            &nbsp;
+                            <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
 
-                            <div className="header">หน่วยงานที่จัดกิจกรรม</div>
-                            <input className="input1" type="text"  onChange={e => setdepartment(e.target.value)} />
-
-                            <div className="header">รายละเอียด</div>
-                            <textarea className="textarea1"  onChange={e => setdetail(e.target.value)} />
-
-                            <div className="header">สิ่งที่ได้รับจากกิจกรรม</div>
-                            <textarea className="textarea1"  onChange={e => setGive(e.target.value)} />
-
-                            <div className="header">วันที่</div>
-                            <input type="date"  min="2020-01-01" max="2023-12-31" onChange={e => setDate(e.target.value)} />
-
-                            <div className="header">เวลาที่จัดกิจกรรม</div>
-                            <div className="header1_1">เริ่มกิจกรรม</div>
-                            <input type="time" onChange={e => setStart(e.target.value)} />
-
-                            <div className="header1_1">สิ้นสุดกิจกรรม</div>
-                            <input type="time"  onChange={e => setend(e.target.value)} />
                         </div>
 
-                        <Button variant="contained" color="primary" onClick={handleClose} >Update</Button>
-                        <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
                     </div>
                 </Fade>
             </Modal>

@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CreateForm = () => {
+    const firestore = firebase.firestore();
+
     const classes = useStyles();
     const [name, setName] = useState('')
     const [department, setdepartment] = useState('')
@@ -39,16 +41,31 @@ const CreateForm = () => {
     const [start, setStart] = useState('')
     const [end, setend] = useState('')
     const [open, setOpen] = useState(false);
+    const [activitys, setActivitys] = useState([]);
 
-    const firestore = firebase.firestore();
+    const getAcitivity = async () => {
+        await firestore.collection("Activity").onSnapshot((snapshot) => {
+            let myactivity = snapshot.docs.map(d => {
+                const { date, department, detail, end, give, name, start } = d.data();
+                return { date, department, detail, end, give, name, start };
+            });
+            
+            setActivitys(myactivity);
+        });
+
+    }
 
     const addActivity = async () => {
-        await firestore.collection('Activity').doc(name).set({ name, department, detail, give, date, start, end })
+        await firestore.collection('Activity').doc(activitys.length+1+'').set({ name, department, detail, give, date, start, end })
         setOpen(true);
     }
     const handleClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        getAcitivity();
+    }, [])
 
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (

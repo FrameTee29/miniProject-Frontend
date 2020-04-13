@@ -5,17 +5,16 @@ import Listactivity from './components/listactivity';
 import './EditActivity.css'
 
 const EditActivity = () => {
-    const [activitys, setActivitys] = useState([]);
-
     const firestore = firebase.firestore();
 
+    const [activitys, setActivitys] = useState([]);
     const getAcitivity = async () => {
         await firestore.collection("Activity").onSnapshot((snapshot) => {
             let myactivity = snapshot.docs.map(d => {
                 const { date, department, detail, end, give, name, start } = d.data();
                 return { date, department, detail, end, give, name, start };
             });
-            console.log(myactivity)
+            // console.log(myactivity)
             setActivitys(myactivity);
         });
 
