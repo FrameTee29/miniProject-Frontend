@@ -16,7 +16,8 @@
   }
 
   .grid_1{
-      width: 590px;
+    width: 590px;
+    cursor: pointer;
   }
 
   .grid_2{

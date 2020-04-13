@@ -10,6 +10,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
+import AllDetail from './AllDetail';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -32,18 +33,9 @@ const useStyles = makeStyles((theme) => ({
 const Listactivityuser = (props) => {
 
     const firestore = firebase.firestore();
-
-    const { activity, deleteActivity } = props;
+    const { activity} = props;
     const { id, date, department, detail, end, give, name, start } = activity;
-
     const classes = useStyles();
-    const [newname, setName] = useState(name)
-    const [newdepartment, setdepartment] = useState(department)
-    const [newdetail, setdetail] = useState(detail)
-    const [newgive, setGive] = useState(give)
-    const [newdate, setDate] = useState(date)
-    const [newstart, setStart] = useState(start)
-    const [newend, setend] = useState(end)
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -51,16 +43,6 @@ const Listactivityuser = (props) => {
     };
 
     const handleClose = async () => {
-        await firestore.collection('Activity').doc(id).update(
-            {
-                name: newname,
-                department: newdepartment,
-                detail: newdepartment,
-                give: newgive,
-                date: newdate,
-                start: newdate,
-                end: newend
-            })
         setOpen(false);
     };
     const handleClose2 = async () => {
@@ -72,7 +54,7 @@ const Listactivityuser = (props) => {
     return (
         <div>
             <div className="Grid-containeruser">
-                <div className="grid_1">
+                <div className="grid_1" onClick={handleOpen}>
                     <div className="item1">
                         <div className="nameact">{name}</div>
                         <div>{date}</div>
@@ -82,6 +64,25 @@ const Listactivityuser = (props) => {
                     <div className="item2">{department}</div>
                 </div>
             </div>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <AllDetail activity={activity}/>
+                        <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
+                    </div>
+                </Fade>
+            </Modal>
         </div>
     )
 }

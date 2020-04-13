@@ -58,7 +58,7 @@ const Listactivity = (props) => {
                 detail: newdepartment,
                 give: newgive,
                 date: newdate,
-                start: newdate,
+                start: newstart,
                 end: newend
             })
         setOpen(false);
