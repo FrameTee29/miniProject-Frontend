@@ -52,7 +52,7 @@ const Topbar = () => {
                 <div className="barname">
                     <img className="PhotoURL" id="photo" src={firebase.auth().currentUser.photoURL} />
                     <div className="displayName">{firebase.auth().currentUser.displayName}</div>
-                    <Button variant="contained" color="secondary" onClick={() => firebase.auth().signOut()}>Sign-out</Button>
+                    <Button variant="outlined" color="primary" onClick={() => firebase.auth().signOut()}>Sign-out</Button>
                 </div>
             </div>
         </div>
