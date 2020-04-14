@@ -9,7 +9,7 @@ import './signin.css';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Home from './Home';
 import Activity from './Activity';
-import History from './History'
+import About from './About'
 import Admin from './Admin';
 import CreateForm from './CreateForm';
 import EditActivity from './EditActivity';
@@ -69,7 +69,7 @@ const App = () => {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/activity" component={Activity} />
-          <Route path="/History" component={History} />
+          <Route path="/about" component={About} />
           <Route path="/admin" component={Admin} />
           <Route path="/createform" component={CreateForm} />
           <Route path="/editactivity" component={EditActivity} />

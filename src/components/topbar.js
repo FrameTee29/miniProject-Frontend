@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 
 const Topbar = () => {
 
+
+
     const checkEmail = () => {
 
         if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
@@ -23,19 +25,21 @@ const Topbar = () => {
         }
     }
 
+
+
     return (
         <div>
             <div className="boxtopbar">
 
 
-                <Link to="/home">
-                    <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
-                </Link>
                 <div className="barmenu">
+                    <Link to="/home">
+                        <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
+                    </Link>
                     <Link to="/home">
                         <button className="btn-menu">Home</button>
                     </Link>
-                    <Link to="/history">
+                    <Link to="/about">
                         <button className="btn-menu">About</button>
                     </Link>
                     <Link to="/activity">

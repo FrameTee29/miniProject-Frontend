@@ -3,14 +3,14 @@ import './App.css';
 import firebase from 'firebase';
 import Topbar from './components/topbar';
 
-const History = () => {
+const About = () => {
 
     return (
         <div>
-            History
+            About
         </div>
     );
 
 }
 
-export default History;
+export default About;
