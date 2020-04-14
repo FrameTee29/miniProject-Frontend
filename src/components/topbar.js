@@ -33,10 +33,10 @@ const Topbar = () => {
 
 
                 <div className="barmenu">
-                    <Link to="/home">
+                    <Link to="/">
                         <img className="PSU" src="https://www.phuket.psu.ac.th/wp-content/uploads/2019/03/cropped-PSU_PHUKET-EN.png"></img>
                     </Link>
-                    <Link to="/home">
+                    <Link to="/">
                         <button className="btn-menu">Home</button>
                     </Link>
                     <Link to="/about">

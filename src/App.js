@@ -67,7 +67,7 @@ const App = () => {
       <Router>
         <Topbar/>
         <Switch>
-          <Route path="/home" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route path="/activity" component={Activity} />
           <Route path="/about" component={About} />
           <Route path="/admin" component={Admin} />
