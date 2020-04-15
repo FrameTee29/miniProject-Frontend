@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const PartEditClub = () => {
+const PartEditClub = (props) => {
 
     const firestore = firebase.firestore();
     const classes = useStyles();
@@ -83,11 +83,6 @@ const PartEditClub = () => {
         setOpen(false);
     };
 
-    const handleClose2 = async () => {
-        setOpen(false);
-    };
-
-
     useEffect(() => {
         getClub();
     }, [])
@@ -109,12 +104,13 @@ const PartEditClub = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {clubs.map((row) => {
+                                {clubs.map((row,key) => {
+                                    
                                     return (
                                         <TableRow key={row.name}>
-                                            <TableCell component="th" scope="row"><input className="Heading2" onChange={e => setName(e.target.value)} /></TableCell>
-                                            <TableCell ><input className="Heading3"  onChange={e => setLeader(e.target.value)} /></TableCell>
-                                            <TableCell><input className="Heading3" onChange={e => setEmail(e.target.value)} /></TableCell>
+                                            <TableCell component="th" scope="row"><input className="Heading2" value={row.name}  onChange={e => setName(e.target.value)} /></TableCell>
+                                            <TableCell ><input className="Heading3" value={row.leader}   onChange={e => setLeader(e.target.value)} /></TableCell>
+                                            <TableCell><input className="Heading3"  value={row.email}  onChange={e => setEmail(e.target.value)} /></TableCell>
                                             <TableCell><Button variant="contained" color="primary" onClick={() => updateClub(row.id)}>Update</Button></TableCell>
                                             <TableCell><Button variant="contained" color="secondary" onClick={() => deleteClub(row.id)}>Delete</Button></TableCell>
                                         </TableRow>
@@ -159,7 +155,7 @@ const PartEditClub = () => {
                                 <br></br>
                                 <Button variant="contained" color="primary" onClick={addClub} >Add</Button>
                             &nbsp;
-                            <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
+                            <Button variant="contained" color="primary" onClick={handleClose} >Cancel</Button>
                             </div>
 
                         </div>
