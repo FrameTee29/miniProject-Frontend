@@ -13,9 +13,60 @@ import Button from '@material-ui/core/Button';
 import PartEditClub from './components/PartEditClub'
 import PartEditOrganization from './components/PartEditOrganization';
 
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        border: '1px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
+
 const EditClubs = () => {
 
     const firestore = firebase.firestore();
+    const classes = useStyles();
+
+    const [open, setOpen] = useState(false);
+    const [clubs, setClubs] = useState([]);
+
+    const [name, setName] = useState('')
+    const [leader, setLeader] = useState('')
+    const [email, setEmail] = useState('')
+
+    const getClub = async () => {
+        await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
+            let myClubs = snapshot.docs.map((d) => {
+                const { id, name, leader, email } = d.data();
+                return { id, name, leader, email };
+            })
+          setClubs(myClubs);
+        })
+    }
+
+    const addClub = async () => {
+        const id = (clubs.length === 0) ? 1 : clubs[clubs.length - 1].id + 1;
+        await firestore.collection('Club').doc(id + '').set({ id, name, leader, email });
+        setOpen(false);
+    }
+
+    const deleteClub = (id) => {
+        firestore.collection("Club").doc(id + '').delete();
+    }
+
+    useEffect(() => {
+        getClub();
+    }, [])
+
 
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
