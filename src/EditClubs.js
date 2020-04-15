@@ -9,62 +9,32 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import firebase from 'firebase';
-
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
+import Button from '@material-ui/core/Button';
+import PartEditClub from './components/PartEditClub'
+import PartEditOrganization from './components/PartEditOrganization';
 
 const EditClubs = () => {
 
     const firestore = firebase.firestore();
-    const classes = useStyles();
-    const [clubs, setClubs] = useState([]);
-    const getClub = async () => {
-        await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
-            let myClubs = snapshot.docs.map((d) => {
-                const { id, name, leader, email } = d.data();
-                return { id, name, leader, email };
-            })
-            setClubs(myClubs);
-        })
+
+    if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
+        return (
+            <div>
+                <Topbaradmin />
+                editclub
+                <PartEditClub/>
+                editOrganization
+                <PartEditOrganization/>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                You not admin
+            </div>
+        );
     }
 
-    useEffect(() => {
-        getClub();
-    }, [])
-
-
-    return (
-        <div>
-            <Topbaradmin />
-            editclub
-            <div className="ContainerAbout">
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell ><div className="Heading1">ชื่อชมรม</div></TableCell>
-                                <TableCell ><div className="Heading1">ประธานชมรม</div></TableCell>
-                                <TableCell ><div className="Heading1">อีเมล์ชมรม</div></TableCell>
-                                <TableCell ><div className="Heading1">อัพเดทข้อมูล</div></TableCell>
-                                <TableCell ><div className="Heading1">ลบข้อมูล</div></TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {clubs.map((row) => (
-                                <TableRow key={row.name}>
-                                    <TableCell component="th" scope="row"><div className="Heading2">{row.name}</div></TableCell>
-                                    <TableCell ><div className="Heading3">{row.leader}</div></TableCell>
-                                    <TableCell><div className="Heading3">{row.email}</div></TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </div>
-        </div>
-    )
 }
 export default EditClubs;
