@@ -21,10 +21,14 @@ const EditClubs = () => {
         return (
             <div>
                 <Topbaradmin />
-                editclub
-                <PartEditClub/>
-                editOrganization
-                <PartEditOrganization/>
+                <div className="ContainerAboutout">
+                    <div className="ContainerAboutinner">
+                        <p className="HeadingAbout1">แก้ไขชมรม </p>
+                        <PartEditClub />
+                        <p className="HeadingAbout1">แก้ไของค์กร</p>
+                        <PartEditOrganization />
+                    </div>
+                </div>
             </div>
         )
     }
