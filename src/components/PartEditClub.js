@@ -1,4 +1,4 @@
-
+import './PartEditClub.css'
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -13,6 +13,8 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import EditIcon from '@material-ui/icons/Edit';
+import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -44,13 +46,17 @@ const PartEditClub = (props) => {
     const [leader, setLeader] = useState('')
     const [email, setEmail] = useState('')
 
+    const [statusname, setStatusName] = useState(false)
+    const [statusleader, setStatusLeader] = useState(false)
+    const [statusemail, setStatusEmail] = useState(false)
+
     const getClub = async () => {
         await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
             let myClubs = snapshot.docs.map((d) => {
                 const { id, name, leader, email } = d.data();
                 return { id, name, leader, email };
             })
-          setClubs(myClubs);
+            setClubs(myClubs);
         })
     }
 
@@ -64,13 +70,13 @@ const PartEditClub = (props) => {
         firestore.collection("Club").doc(id + '').delete();
     }
 
-    const updateClub = async (id) => {
-        await firestore.collection("Club").doc(id + '').update(
+    const updateClub = async (ids, names, leaders, emails) => {
+        await firestore.collection("Club").doc(ids + '').update(
             {
-                id: id,
-                name: name,
-                leader: leader,
-                email: email
+                id: ids,
+                name: names,
+                leader: leaders,
+                email: emails
             }
         )
     }
@@ -82,6 +88,33 @@ const PartEditClub = (props) => {
     const handleClose = async () => {
         setOpen(false);
     };
+
+    const setEditname = () => {
+        if (statusname == false) {
+            setStatusName(true)
+        }
+        else {
+            setStatusName(false)
+        }
+    }
+
+    const setEditleader = () => {
+        if (statusleader == false) {
+            setStatusLeader(true)
+        }
+        else {
+            setStatusLeader(false)
+        }
+    }
+
+    const setEditemail = () => {
+        if (statusemail == false) {
+            setStatusEmail(true)
+        }
+        else {
+            setStatusEmail(false)
+        }
+    }
 
     useEffect(() => {
         getClub();
@@ -99,28 +132,37 @@ const PartEditClub = (props) => {
                                     <TableCell ><div className="Heading1">ชื่อชมรม</div></TableCell>
                                     <TableCell ><div className="Heading1">ประธานชมรม</div></TableCell>
                                     <TableCell ><div className="Heading1">อีเมล์ชมรม</div></TableCell>
-                                    <TableCell ><div className="Heading1">อัพเดทข้อมูล</div></TableCell>
                                     <TableCell ><div className="Heading1">ลบข้อมูล</div></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {clubs.map((row) => {
-                                    
+
                                     return (
                                         <TableRow key={row.name}>
                                             <TableCell component="th" scope="row">
-                                                <div className="Heading2">{row.name}</div>
-                                                <input className="Heading2" onChange={e => setName(e.target.value)} />
+                                                <div className="rowPartclub"><div className="Heading2">{row.name}</div><EditIcon onClick={() => setEditname()} /></div>
+                                                {statusname ? <div className="rowPartclub"><input className="Heading2" onChange={e => setName(e.target.value)} />
+                                                <SystemUpdateAltIcon onClick={() => {
+                                                    setEditname()
+                                                    updateClub(row.id, name, row.leader, row.email)} }/></div> : <div></div>}
                                             </TableCell>
                                             <TableCell >
-                                                <div className="Heading3">{row.leader}</div>
-                                                <input className="Heading3"  onChange={e => setLeader(e.target.value)} />
-                                                </TableCell>
+                                                <div className="rowPartclub"> <div className="Heading3">{row.leader}</div><EditIcon onClick={() => setEditleader()} /></div>
+                                                {statusleader ? <div className="rowPartclub"><input className="Heading3" onChange={e => setLeader(e.target.value)} />
+                                                <SystemUpdateAltIcon onClick={() =>{
+                                                    setEditleader()
+                                                    updateClub(row.id,row.name,leader, row.email)}} /></div> : <div></div>}
+                                            </TableCell>
                                             <TableCell>
-                                                <div className="Heading3">{row.email}</div>
-                                                <input className="Heading3" onChange={e => setEmail(e.target.value)} />
-                                                </TableCell>
-                                            <TableCell><Button variant="contained" color="primary" onClick={() => updateClub(row.id)}>Update</Button></TableCell>
+                                            <div className="rowPartclub"><div className="Heading3">{row.email}</div><EditIcon onClick={() => setEditemail()} /></div>
+                                                {statusemail ? <div className="rowPartclub"><input className="Heading3" onChange={e => setEmail(e.target.value)} />
+                                                <SystemUpdateAltIcon onClick={() =>{
+                                                    setEditemail() 
+                                                    updateClub(row.id,row.name,row.leader,email)}} /></div> : <div></div>}
+                                                
+                                                
+                                            </TableCell>
                                             <TableCell><Button variant="contained" color="secondary" onClick={() => deleteClub(row.id)}>Delete</Button></TableCell>
                                         </TableRow>
                                     );
