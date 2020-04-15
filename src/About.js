@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './About.css';
 import firebase from 'firebase';
 import Topbar from './components/topbar';
 import Part1About from './components/Part1About'
@@ -9,10 +9,14 @@ const About = () => {
 
     return (
         <div>
-            Clubs
-            <Part1About />
-            Organizations
-            <Part2About />
+            <div className="ContainerAboutout">
+                <div className="ContainerAboutinner">
+                    <p className="HeadingAbout1">Organizations</p>
+                    <Part2About />
+                    <p className="HeadingAbout1">Clubs</p>
+                    <Part1About />
+                </div>
+            </div>
         </div>
     );
 
