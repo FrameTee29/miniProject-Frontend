@@ -14,6 +14,9 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+import EditIcon from '@material-ui/icons/Edit';
+import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
+
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -66,6 +69,20 @@ const PartEditOrganization = () => {
         setOpen(false);
     }
 
+    const deleteOrganization =(id)=>{
+        firestore.collection("Center").doc(id+'').delete();
+    }
+
+    const updateOrganization = async (ids, organizes, responesbys, emails) => {
+        await firestore.collection("Center").doc(ids + '').update(
+            {
+                id: ids,
+                organize: organizes,
+                responesby: responesbys,
+                email: emails
+            }
+        )
+    }
     const handleOpen = () => {
         setOpen(true);
     };
@@ -73,6 +90,33 @@ const PartEditOrganization = () => {
     const handleClose = async () => {
         setOpen(false);
     };
+
+    const setEditorganize=()=>{
+        if (statusOrganize == false) {
+            setStatusOrganize(true)
+        }
+        else {
+            setStatusOrganize(false)
+        }
+    }
+
+    const setEditRespones=()=>{
+        if (statusResponesby == false) {
+            setStatusResponesby(true)
+        }
+        else {
+            setStatusResponesby(false)
+        }
+    }
+
+    const setEditEmail=()=>{
+        if (statusEmail == false) {
+            setStatusEmail(true)
+        }
+        else {
+            setStatusEmail(false)
+        }
+    }
 
     useEffect(() => {
         getorganizations();
@@ -96,10 +140,34 @@ const PartEditOrganization = () => {
                             <TableBody>
                                 {organizations.map((row) => (
                                     <TableRow key={row.organize}>
-                                        <TableCell component="th" scope="row"><input className="Heading2" value={row.organize} /></TableCell>
-                                        <TableCell ><input className="Heading3" value={row.responesby} /></TableCell>
-                                        <TableCell><input className="Heading3" value={row.email} /></TableCell>
-                                        <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
+
+                                        <TableCell component="th" scope="row">
+                                        <div className="rowPartclub"><div className="Heading2">{row.organize}</div><EditIcon onClick={() => setEditorganize()} /></div>
+                                        {statusOrganize ? <div className="rowPartclub"><input className="Heading2" onChange={e => setOrganize(e.target.value)} />
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditorganize()
+                                                        updateOrganization(row.id,organize,row.responesby,row.email)
+                                                    }} /></div> : <div></div>}
+                                        </TableCell>
+
+                                        <TableCell >
+                                            <div className="rowPartclub"><div className="Heading3">{row.responesby}</div><EditIcon onClick={() => setEditRespones()} /></div>
+                                            {statusResponesby ? <div className="rowPartclub"><input className="Heading3" onChange={e => setResponesby(e.target.value)} />
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditRespones()
+                                                        updateOrganization(row.id,row.organize,responesby,row.email)
+                                                    }} /></div> : <div></div>}
+                                        </TableCell>
+
+                                        <TableCell>
+                                        <div className="rowPartclub"><div className="Heading3">{row.email}</div><EditIcon onClick={() => setEditEmail()} /></div>
+                                        {statusEmail ? <div className="rowPartclub"><input className="Heading3" onChange={e => setEmail(e.target.value)} />
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditEmail()
+                                                        updateOrganization(row.id,row.organize,row.responesby,email)
+                                                    }} /></div> : <div></div>}
+                                        </TableCell>
+                                        <TableCell><Button variant="contained" color="secondary" onClick={()=>deleteOrganization(row.id)}>Delete</Button></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
