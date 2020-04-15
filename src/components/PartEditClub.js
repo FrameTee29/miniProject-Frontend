@@ -36,8 +36,13 @@ const PartEditClub = () => {
 
     const firestore = firebase.firestore();
     const classes = useStyles();
+
     const [open, setOpen] = useState(false);
     const [clubs, setClubs] = useState([]);
+
+    const [name, setName] = useState('')
+    const [leader, setLeader] = useState('')
+    const [email, setEmail] = useState('')
 
     const getClub = async () => {
         await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
@@ -47,6 +52,16 @@ const PartEditClub = () => {
             })
             setClubs(myClubs);
         })
+    }
+
+    const addClub = async()=>{
+        const id = (clubs.length===0)?1:clubs[clubs.length - 1].id + 1;
+        await firestore.collection('Club').doc(id+'').set({id,name,leader,email});
+        setOpen(false);
+    }
+
+    const deleteClub =(id)=>{
+        firestore.collection("Club").doc(id+'').delete();
     }
 
     const handleOpen = () => {
@@ -83,12 +98,12 @@ const PartEditClub = () => {
                             </TableHead>
                             <TableBody>
                                 {clubs.map((row) => (
-                                    <TableRow key={row.name}>
+                                    <TableRow>
                                         <TableCell component="th" scope="row"><input className="Heading2" value={row.name}/></TableCell>
                                         <TableCell ><input className="Heading3" value={row.leader}/></TableCell>
                                         <TableCell><input className="Heading3" value={row.email}/></TableCell>
                                         <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
-                                        <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
+                                        <TableCell><Button variant="contained" color="secondary" onClick={()=>deleteClub(row.id)}>Delete</Button></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -115,20 +130,20 @@ const PartEditClub = () => {
                         <form>
                             <div>
                                 <div className="header">ชื่อชมรม</div>
-                                <input className="input1" type="text" value="ชื่อชมรม"  />
+                                <input className="input1" type="text" placeholder="ชื่อชมรม" onChange={e=>setName(e.target.value)} />
 
                                 <div className="header">ประธานชมรม</div>
-                                <input className="input1" type="text" value="ประธาน"  />
+                                <input className="input1" type="text" placeholder="ประธาน" onChange={e=>setLeader(e.target.value)} />
 
-                                <div className="header">อีเมล์ติดต่อ</div>
-                                <input className="input1" type="text" value="ประธาน"  />
+                                <div className="header">อีเมล์ชมรม</div>
+                                <input className="input1" type="text" placeholder="อีเมล์ชมรม" onChange={e=>setEmail(e.target.value)} />
 
                             </div>
                         </form>
 
                         <div>
                             <br></br>
-                            <Button variant="contained" color="primary" onClick={handleClose2} >Add</Button>
+                            <Button variant="contained" color="primary" onClick={addClub} >Add</Button>
                             &nbsp;
                             <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
                         </div>
