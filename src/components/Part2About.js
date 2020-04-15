@@ -18,23 +18,26 @@ const useStyles = makeStyles({
     },
 });
 
-const SimpleTable = () => {
+const Part2About = () => {
 
     const firestore = firebase.firestore();
     const classes = useStyles();
-    const [clubs, setClubs] = useState([]);
-    const getClub = async () => {
-        await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
-            let myClubs = snapshot.docs.map((d) => {
-                const { id, name, leader, email } = d.data();
-                return { id, name, leader, email };
+    const [organizations, setOrganizations] = useState([]);
+    const getorganizations = async () => {
+
+        await firestore.collection("Center").orderBy('id', 'asc').onSnapshot((snapshot) => {
+            let myorganizations = snapshot.docs.map((d) => {
+                const { id,organize,responesby, email } = d.data();
+                
+                return { id,organize,responesby, email };
             })
-            setClubs(myClubs);
+            console.log(JSON.stringify(myorganizations))
+            setOrganizations(myorganizations);
         })
     }
 
     useEffect(() => {
-        getClub();
+        getorganizations();
     }, [])
 
 
@@ -44,16 +47,16 @@ const SimpleTable = () => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell ><div className="Heading1">ชื่อชมรม</div></TableCell>
-                            <TableCell ><div className="Heading1">ประธานชมรม</div></TableCell>
-                            <TableCell ><div className="Heading1">อีเมล์ชมรม</div></TableCell>
+                            <TableCell ><div className="Heading1">องค์กรกิจกรรม</div></TableCell>
+                            <TableCell ><div className="Heading1">รับผิดชอบโดย</div></TableCell>
+                            <TableCell ><div className="Heading1">อีเมล์องค์กร</div></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {clubs.map((row) => (
-                            <TableRow key={row.name}>
-                                <TableCell component="th" scope="row"><div className="Heading2">{row.name}</div></TableCell>
-                                <TableCell ><div className="Heading3">{row.leader}</div></TableCell>
+                        {organizations.map((row) => (
+                            <TableRow key={row.organize}>
+                                <TableCell component="th" scope="row"><div className="Heading2">{row.organize}</div></TableCell>
+                                <TableCell ><div className="Heading3">{row.responesby}</div></TableCell>
                                 <TableCell><div className="Heading3">{row.email}</div></TableCell>
                             </TableRow>
                         ))}
@@ -64,4 +67,4 @@ const SimpleTable = () => {
     );
 }
 
-export default SimpleTable;
+export default Part2About;

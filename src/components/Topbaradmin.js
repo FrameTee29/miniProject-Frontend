@@ -16,6 +16,9 @@ const Topbaradmin = () => {
                     <Link to="/editactivity">
                         <button className="btn-menuadmin">Edit Activity</button>
                     </Link>
+                    <Link to="/editclub">
+                        <button className="btn-menuadmin">Edit Organization</button>
+                    </Link>
                 </div>
 
             )
