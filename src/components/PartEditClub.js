@@ -38,7 +38,6 @@ const PartEditClub = (props) => {
 
     const firestore = firebase.firestore();
     const classes = useStyles();
-
     const [open, setOpen] = useState(false);
     const [clubs, setClubs] = useState([]);
 
@@ -143,25 +142,28 @@ const PartEditClub = (props) => {
                                             <TableCell component="th" scope="row">
                                                 <div className="rowPartclub"><div className="Heading2">{row.name}</div><EditIcon onClick={() => setEditname()} /></div>
                                                 {statusname ? <div className="rowPartclub"><input className="Heading2" onChange={e => setName(e.target.value)} />
-                                                <SystemUpdateAltIcon onClick={() => {
-                                                    setEditname()
-                                                    updateClub(row.id, name, row.leader, row.email)} }/></div> : <div></div>}
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditname()
+                                                        updateClub(row.id, name, row.leader, row.email)
+                                                    }} /></div> : <div></div>}
                                             </TableCell>
                                             <TableCell >
                                                 <div className="rowPartclub"> <div className="Heading3">{row.leader}</div><EditIcon onClick={() => setEditleader()} /></div>
                                                 {statusleader ? <div className="rowPartclub"><input className="Heading3" onChange={e => setLeader(e.target.value)} />
-                                                <SystemUpdateAltIcon onClick={() =>{
-                                                    setEditleader()
-                                                    updateClub(row.id,row.name,leader, row.email)}} /></div> : <div></div>}
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditleader()
+                                                        updateClub(row.id, row.name, leader, row.email)
+                                                    }} /></div> : <div></div>}
                                             </TableCell>
                                             <TableCell>
-                                            <div className="rowPartclub"><div className="Heading3">{row.email}</div><EditIcon onClick={() => setEditemail()} /></div>
+                                                <div className="rowPartclub"><div className="Heading3">{row.email}</div><EditIcon onClick={() => setEditemail()} /></div>
                                                 {statusemail ? <div className="rowPartclub"><input className="Heading3" onChange={e => setEmail(e.target.value)} />
-                                                <SystemUpdateAltIcon onClick={() =>{
-                                                    setEditemail() 
-                                                    updateClub(row.id,row.name,row.leader,email)}} /></div> : <div></div>}
-                                                
-                                                
+                                                    <SystemUpdateAltIcon onClick={() => {
+                                                        setEditemail()
+                                                        updateClub(row.id, row.name, row.leader, email)
+                                                    }} /></div> : <div></div>}
+
+
                                             </TableCell>
                                             <TableCell><Button variant="contained" color="secondary" onClick={() => deleteClub(row.id)}>Delete</Button></TableCell>
                                         </TableRow>
@@ -187,7 +189,6 @@ const PartEditClub = (props) => {
                     <Fade in={open}>
                         <div className={classes.paper}>
                             <div className="header">Add club</div>
-                        
                             <form>
                                 <div>
                                     <div className="header">ชื่อชมรม</div>
@@ -201,7 +202,6 @@ const PartEditClub = (props) => {
 
                                 </div>
                             </form>
-
                             <div>
                                 <br></br>
                                 <Button variant="contained" color="primary" onClick={addClub} >Add</Button>
