@@ -21,7 +21,7 @@ const Zoomout = () => {
 
   return (
     <div className="containerzoomout">
-      <div style={{ width: "60%" }}>
+      <div style={{ width: "65%" }}>
         <Zoom {...zoomOutProperties}>
           {
             images.map((each, index) => <img key={index} style={{ width: "100%" }} src={each} />)

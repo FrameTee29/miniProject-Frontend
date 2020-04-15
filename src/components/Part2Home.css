@@ -1,0 +1,55 @@
+.ContainerPart2Home{
+    display: flex;
+    background-image: linear-gradient(0deg, #f8f3a9,#f8f3a9);
+    width: 100%;
+    font-family: 'Mali', cursive;
+    justify-content: center;
+}
+.BoxPart2{
+    display: flex;
+    background-color:#fdfceb;
+    width: 700px;
+    
+    padding: 30px;
+    margin: 20px;
+    flex-direction: column;
+    border-radius: 20px;
+    border-color:rgba(0, 0, 0, 0.5);
+    border-width: 2px;
+    border-style: solid ;
+}
+
+.headpart2{
+    font-size: 25px;
+    font-weight: 600;
+    color: seagreen;
+}
+.headpart3{
+    font-size: 15px;
+    font-weight: 600;
+    color: seagreen;
+    
+}
+.fontpart2{
+    font-size: 18px;
+    font-weight: 400;
+    text-indent: 2.5em;
+}
+
+.imgPart2{
+    width: 220px;
+    border-radius: 20px;
+}
+
+.boximg{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.alink{
+    text-decoration: none;
+}
+
+.alink:hover {
+    text-decoration: underline;
+  }
