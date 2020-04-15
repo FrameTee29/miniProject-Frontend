@@ -39,6 +39,7 @@ const PartEditClub = () => {
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
             <div>
+
                 <div className="ContainerAbout">
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
@@ -54,9 +55,9 @@ const PartEditClub = () => {
                             <TableBody>
                                 {clubs.map((row) => (
                                     <TableRow key={row.name}>
-                                        <TableCell component="th" scope="row"><div className="Heading2">{row.name}</div></TableCell>
-                                        <TableCell ><div className="Heading3">{row.leader}</div></TableCell>
-                                        <TableCell><div className="Heading3">{row.email}</div></TableCell>
+                                        <TableCell component="th" scope="row"><input className="Heading2" value={row.name}/></TableCell>
+                                        <TableCell ><input className="Heading3" value={row.leader}/></TableCell>
+                                        <TableCell><input className="Heading3" value={row.email}/></TableCell>
                                         <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
                                         <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
                                     </TableRow>

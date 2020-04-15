@@ -57,9 +57,9 @@ const PartEditOrganization = () => {
                     <TableBody>
                         {organizations.map((row) => (
                             <TableRow key={row.organize}>
-                                <TableCell component="th" scope="row"><div className="Heading2">{row.organize}</div></TableCell>
-                                <TableCell ><div className="Heading3">{row.responesby}</div></TableCell>
-                                <TableCell><div className="Heading3">{row.email}</div></TableCell>
+                                <TableCell component="th" scope="row"><input className="Heading2" value={row.organize}/></TableCell>
+                                <TableCell ><input className="Heading3" value={row.responesby}/></TableCell>
+                                <TableCell><input className="Heading3" value={row.email} /></TableCell>
                                 <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
                                 <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
                             </TableRow>
