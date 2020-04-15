@@ -31,7 +31,6 @@ const PartEditOrganization = () => {
 
                 return { id, organize, responesby, email };
             })
-            console.log(JSON.stringify(myorganizations))
             setOrganizations(myorganizations);
         })
     }
@@ -52,7 +51,6 @@ const PartEditOrganization = () => {
                                     <TableCell ><div className="Heading1">องค์กรกิจกรรม</div></TableCell>
                                     <TableCell ><div className="Heading1">รับผิดชอบโดย</div></TableCell>
                                     <TableCell ><div className="Heading1">อีเมล์องค์กร</div></TableCell>
-                                    <TableCell ><div className="Heading1">อัพเดทข้อมูล</div></TableCell>
                                     <TableCell ><div className="Heading1">ลบข้อมูล</div></TableCell>
                                 </TableRow>
                             </TableHead>
@@ -62,7 +60,6 @@ const PartEditOrganization = () => {
                                         <TableCell component="th" scope="row"><input className="Heading2" value={row.organize} /></TableCell>
                                         <TableCell ><input className="Heading3" value={row.responesby} /></TableCell>
                                         <TableCell><input className="Heading3" value={row.email} /></TableCell>
-                                        <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
                                         <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
                                     </TableRow>
                                 ))}

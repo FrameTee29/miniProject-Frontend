@@ -186,8 +186,8 @@ const PartEditClub = (props) => {
                 >
                     <Fade in={open}>
                         <div className={classes.paper}>
-                            {/* <div className="header">Status create activity</div>
-                        <div>Succuess</div> */}
+                            <div className="header">Add club</div>
+                        
                             <form>
                                 <div>
                                     <div className="header">ชื่อชมรม</div>
