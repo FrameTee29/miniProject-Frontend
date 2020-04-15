@@ -11,8 +11,7 @@ const EditActivity = () => {
     const getAcitivity = async () => {
         await firestore.collection("Activity").orderBy("date","asc").onSnapshot((snapshot) => {
             let myactivity = snapshot.docs.map(d => {
-                const { date, department, detail, end, give, name, start } = d.data();
-                const id= d.id;
+                const {id, date, department, detail, end, give, name, start } = d.data();
                 return { id, date, department, detail, end, give, name, start };
             });
             

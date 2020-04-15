@@ -33,6 +33,7 @@ const CreateForm = () => {
     const firestore = firebase.firestore();
 
     const classes = useStyles();
+    const [id,setId] = useState('');
     const [name, setName] = useState('')
     const [department, setdepartment] = useState('')
     const [detail, setdetail] = useState('')
@@ -46,8 +47,8 @@ const CreateForm = () => {
     const getAcitivity = async () => {
         await firestore.collection("Activity").onSnapshot((snapshot) => {
             let myactivity = snapshot.docs.map(d => {
-                const { date, department, detail, end, give, name, start } = d.data();
-                return { date, department, detail, end, give, name, start };
+                const {id, date, department, detail, end, give, name, start } = d.data();
+                return {id,date, department, detail, end, give, name, start };
             });
             
             setActivitys(myactivity);
@@ -56,7 +57,8 @@ const CreateForm = () => {
     }
 
     const addActivity = async () => {
-        await firestore.collection('Activity').doc(activitys.length+1+'').set({ name, department, detail, give, date, start, end })
+        const id = (activitys.length === 0 )? 1: activitys[activitys.length - 1].id +1;
+        await firestore.collection('Activity').doc(id+'').set({id ,name, department, detail, give, date, start, end })
         setOpen(true);
     }
     const handleClose = () => {
