@@ -10,18 +10,35 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import firebase from 'firebase';
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-});
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        border: '1px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 const PartEditClub = () => {
 
     const firestore = firebase.firestore();
     const classes = useStyles();
+    const [open, setOpen] = useState(false);
     const [clubs, setClubs] = useState([]);
+
     const getClub = async () => {
         await firestore.collection("Club").orderBy('id', 'asc').onSnapshot((snapshot) => {
             let myClubs = snapshot.docs.map((d) => {
@@ -32,6 +49,18 @@ const PartEditClub = () => {
         })
     }
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = async () => {
+        setOpen(false);
+    };
+
+    const handleClose2 = async () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
         getClub();
     }, [])
@@ -39,7 +68,7 @@ const PartEditClub = () => {
     if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
         return (
             <div>
-
+                <Button variant="contained" color="primary" href="#contained-buttons" onClick={handleOpen}><div className="Heading4">เพิ่มชมรม</div></Button>
                 <div className="ContainerAbout">
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
@@ -66,6 +95,48 @@ const PartEditClub = () => {
                         </Table>
                     </TableContainer>
                 </div>
+
+                <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        {/* <div className="header">Status create activity</div>
+                        <div>Succuess</div> */}
+                        <form>
+                            <div>
+                                <div className="header">ชื่อชมรม</div>
+                                <input className="input1" type="text" value="ชื่อชมรม"  />
+
+                                <div className="header">ประธานชมรม</div>
+                                <input className="input1" type="text" value="ประธาน"  />
+
+                                <div className="header">อีเมล์ติดต่อ</div>
+                                <input className="input1" type="text" value="ประธาน"  />
+
+                            </div>
+                        </form>
+
+                        <div>
+                            <br></br>
+                            <Button variant="contained" color="primary" onClick={handleClose2} >Add</Button>
+                            &nbsp;
+                            <Button variant="contained" color="primary" onClick={handleClose2} >Cancel</Button>
+                        </div>
+
+                    </div>
+                </Fade>
+            </Modal>
+
             </div>
         )
     }

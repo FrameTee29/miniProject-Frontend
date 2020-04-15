@@ -40,35 +40,46 @@ const PartEditOrganization = () => {
         getorganizations();
     }, [])
 
-
-    return (
-        <div className="ContainerAbout">
-            <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell ><div className="Heading1">องค์กรกิจกรรม</div></TableCell>
-                            <TableCell ><div className="Heading1">รับผิดชอบโดย</div></TableCell>
-                            <TableCell ><div className="Heading1">อีเมล์องค์กร</div></TableCell>
-                            <TableCell ><div className="Heading1">อัพเดทข้อมูล</div></TableCell>
-                            <TableCell ><div className="Heading1">ลบข้อมูล</div></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {organizations.map((row) => (
-                            <TableRow key={row.organize}>
-                                <TableCell component="th" scope="row"><input className="Heading2" value={row.organize}/></TableCell>
-                                <TableCell ><input className="Heading3" value={row.responesby}/></TableCell>
-                                <TableCell><input className="Heading3" value={row.email} /></TableCell>
-                                <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
-                                <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
-    );
+    if (firebase.auth().currentUser.email == "s6035512080@phuket.psu.ac.th") {
+        return (
+            <div>
+                <Button variant="contained" color="primary" href="#contained-buttons"><div className="Heading4">เพิ่มองค์กร</div></Button>
+                <div className="ContainerAbout">
+                    <TableContainer component={Paper}>
+                        <Table className={classes.table} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell ><div className="Heading1">องค์กรกิจกรรม</div></TableCell>
+                                    <TableCell ><div className="Heading1">รับผิดชอบโดย</div></TableCell>
+                                    <TableCell ><div className="Heading1">อีเมล์องค์กร</div></TableCell>
+                                    <TableCell ><div className="Heading1">อัพเดทข้อมูล</div></TableCell>
+                                    <TableCell ><div className="Heading1">ลบข้อมูล</div></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {organizations.map((row) => (
+                                    <TableRow key={row.organize}>
+                                        <TableCell component="th" scope="row"><input className="Heading2" value={row.organize} /></TableCell>
+                                        <TableCell ><input className="Heading3" value={row.responesby} /></TableCell>
+                                        <TableCell><input className="Heading3" value={row.email} /></TableCell>
+                                        <TableCell><Button variant="contained" color="primary">Update</Button></TableCell>
+                                        <TableCell><Button variant="contained" color="secondary">Delete</Button></TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                You not admin
+            </div>
+        );
+    }
 }
 
 export default PartEditOrganization;
