@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+.ContainerAbout{
+    display: flex;
+    width: 750px;
+    font-family: 'Mali', cursive;
+}
+.Heading1{
+    font-family: 'Mali', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(10, 65, 233);
+}
+
+.Heading2{
+    font-family: 'Mali', cursive;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(13, 109, 0);
+}
+
+.Heading3{
+    font-family: 'Mali', cursive;
+    font-size: 15px;
+    font-weight: 400;
+}

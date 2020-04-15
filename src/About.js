@@ -8,7 +8,7 @@ const About = () => {
 
     return (
         <div>
-            About
+            Clubs
             <Part1About />
         </div>
     );
