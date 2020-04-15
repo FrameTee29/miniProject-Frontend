@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import firebase from 'firebase';
 import './Part1About.css'
-import { red } from '@material-ui/core/colors';
+
 
 
 const useStyles = makeStyles({
