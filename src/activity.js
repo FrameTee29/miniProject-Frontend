@@ -12,7 +12,7 @@ const Activity = () => {
     const firestore = firebase.firestore();
 
     const getAcitivity = async () => {
-        await firestore.collection("Activity").onSnapshot((snapshot) => {
+        await firestore.collection("Activity").orderBy("date","asc").onSnapshot((snapshot) => {
             let myactivity = snapshot.docs.map(d => {
                 const { date, department, detail, end, give, name, start } = d.data();
                 return { date, department, detail, end, give, name, start };
